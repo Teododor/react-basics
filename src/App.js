@@ -7,54 +7,63 @@ class App extends Component {
 
   constructor() {
     super(); // this is needed to call the constructor of the parent class
-
     this.state = {
-      name:
-      {
-        firstName: 'TEODOR',
-        lastName: 'AXINTE'
-      },
-      company: 'UNI'
-    }
+      monsters: [
+        {
+          name: 'Linda'
+        },
 
+        {
+          name: 'Frank'
+        },
+
+        {
+          name: 'Jacky'
+        }
+      ]
+    }
   }
 
   render() {
-
-
+    const monsterElements = [];
+    this.state.monsters.forEach(monster => {
+      monsterElements.push(<h1 /*key={monster.name}*/> {monster.name}</h1>)
+    })
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            HI {this.state.name.firstName}, {this.state.name.lastName}! You are working at {this.state.company}
-          </p>
+        {
 
-          <button
-           
-            onClick={() => {
-              this.setState(() => {
+          /*
+          this.state.monsters.forEach(element => {
+            <h1>{element.name}</h1>
+          }, () => {})
 
-                return {
-                  name:
-                  {
-                    firstName: "IONUT",
-                    lastName: "TEODOR"
-                  },
-                  company: "MAI"
-                }
-              }, () => {console.log("CURRENT STATE IS: ", this.state)})
-            }}
+         
+
+          // the issue is with the usage of 'forEach' method in the 'render' function.
+          // the 'forEach' method doesn't return a new array or JSX elements, it simply itterates over the array.
+          // Therefore, the JSX elements inside the 'forEach' callback are not being rendered 
+          // MAP RETURNS AN ARRAY BACK, WHILE FOREACH SIMPLY ITTERATES OVER THE ARRAY
+
+           */
 
 
 
-          >Change Name</button>
-        </header>
+          //USING FOREACH SEPARATELY AND CREATING AFTER THAT THE JSX 
+          monsterElements
+       
+
+
+
+
+
+
+
+          //this.state.monsters.map(monster => <h1>{monster.name}</h1>)
+        }
       </div>
     );
   }
-
-
 }
 
 export default App;
